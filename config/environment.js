@@ -6,7 +6,7 @@ module.exports = function (environment) {
         podModulePrefix: 'siwimi-frontend/pods',
         environment: environment,
         baseURL: '/',
-        locationType: 'auto',
+        locationType: 'hash',
         EmberENV: {
             FEATURES: {
                 // Here you can enable experimental features on an ember canary build
@@ -26,6 +26,8 @@ module.exports = function (environment) {
         // ENV.APP.LOG_TRANSITIONS = true;
         // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
         // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+        ENV.apiHost = 'http://localhost:8080';
     }
 
     if (environment === 'test') {
@@ -41,7 +43,7 @@ module.exports = function (environment) {
     }
 
     if (environment === 'production') {
-
+        ENV.apiHost = 'http://54.175.121.3/siwimi-webapi-0.0.1';
     }
 
     return ENV;

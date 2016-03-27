@@ -1,0 +1,34 @@
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>
+            Time:
+        </label>
+
+        {{select-element selectedValue=period optionList=allPeriods}}
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        <label>
+            Type:
+        </label>
+        {{select-element selectedValue=type optionList=allTypes}}
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        <label>
+            Distance:
+        </label>
+        {{select-element selectedValue=distance optionList=allDistances}}
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <label>
+            Age Group:
+        </label>
+        {{select-element selectedValue=ageGroup optionList=allAgeGroups}}
+    </div>
+
+    <div class="col-xs-12 col-sm-2">
+        <label>
+            {{input checked=isFree type="checkbox"}} Free Events
+        </label>
+    </div>
+</div>

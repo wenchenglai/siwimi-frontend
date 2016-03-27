@@ -1,0 +1,128 @@
+<div class="row row-gutter-top">
+    <div class="col-xs-12">
+        <button class='btn btn-default' {{action "goBack" }}>
+            {{fa-icon "arrow-left"}}
+        </button>
+    </div>
+</div>
+
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12">
+        <h1>
+            {{event.title}}
+        </h1>
+    </div>
+</div>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-md-3">
+        <img width="300" height="300" class="img-responsive img-rounded" onerror="this.src = '/assets/images/siwimi/placeholder-events-daa9a49dd27a4a00426eccdf06bc9f20.jpg';"
+             src={{event.availableImage}}>
+    </div>
+    <div class="col-xs-12 col-md-9">
+        {{#if event.fromDate}}
+            <div class="row row-gutter-bottom">
+                <div class="col-xs-12">
+                    <h4>
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        {{moment-format event.fromDateMoment 'dddd'}},
+                        {{moment-format event.fromDate 'LL'}}
+                        {{#if event.toDate}}
+                            to
+                            {{moment-format event.toDateMoment 'dddd'}},
+                            {{moment-format event.toDate 'LL'}}
+                        {{/if}}
+                    </h4>
+                    <h4>
+                        {{#if event.fromTime}}
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+
+                            {{event.fromTime}}
+
+                        {{/if}}
+                        {{#if event.toTime}}
+
+                            to {{event.toTime}}
+
+                        {{/if}}
+
+                    </h4>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if event.address}}
+            <div class="row row-gutter-bottom">
+                <div class="col-xs-12">
+                    <h4>
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                        {{event.address}}, {{event.city}}, {{event.state}} {{event.zipCode}}
+                    </h4>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if event.type }}
+            <div class="row row-gutter-bottom">
+                <div class="col-xs-3 col-sm-2 col-md-1">
+                    <label>Type:</label>
+                </div>
+                <div class="col-xs-9 col-sm-10 col-md-6">
+                    {{event.type}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if event.fromAge }}
+            <div class="row row-gutter-bottom">
+                <div class="col-xs-2 col-md-1">
+                    <label>Age:</label>
+                </div>
+                <div class="col-xs-10 col-md-6">
+                    {{event.fromAge}}
+                    To {{event.toAge}}
+                </div>
+            </div>
+        {{/if}}
+        {{#if event.price }}
+            <div class="row row-gutter-bottom">
+                <div class="col-xs-2 col-md-1">
+                    <label>Price:</label>
+                </div>
+                <div class="col-xs-4 col-md-3">
+                    <div class="input-group">
+                        ${{event.price}}
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12">
+        <hr>
+    </div>
+</div>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-3 col-sm-2 col-md-1">
+        <label>Description:</label>
+    </div>
+    <div class="col-xs-9 col-sm-10 col-md-6">
+        {{{event.description}}}
+    </div>
+</div>
+
+{{#if event.url }}
+    <div class="row row-gutter-bottom">
+        <div class="col-xs-3 col-sm-2 col-md-1">
+            <label>Web URL:</label>
+        </div>
+        <div class="col-xs-9 col-sm-10 col-md-10">
+            <a href={{event.url}} target="_blank">{{event.url}}</a>
+        </div>
+    </div>
+{{/if}}
+

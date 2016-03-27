@@ -1,0 +1,14 @@
+{{event-filters period=period type=type distance=distance ageGroup=ageGroup isFree=isFree}}
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12">
+        <label>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            {{input value=queryText placeholder="e.g Dancing Babies, Cherry Picking" size="40" enter="search" autofocus="autofocus"}}
+            <button class="btn btn-cys" {{action "search" }}>Search</button>
+        </label>
+    </div>
+</div>
+
+{{event-list events=model queryText=queryText}}
+{{pagination-element queryCount=queryCount pageNumber=pageNumber pageSize=pageSize}}

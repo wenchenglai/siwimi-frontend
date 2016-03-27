@@ -1,0 +1,85 @@
+<section class="row about-us">
+    <div class="row row-gutter-bottom-large row-gutter-top">
+        <div class="col-xs-offset-3 col-xs-2">
+            <img width="150" height="150" src="/assets/images/siwimi/circle-siwimi-white.png" alt="image">
+        </div>
+        <div class="col-xs-4">
+            <h2>Who Are We?</h2>
+            <p>
+                We are a group of parents — just like you — who are busily taking care of our young children.
+                We understand the chaos that comes along with raising a family and hope to lessen that chaos by bringing local families together.
+            </p>
+        </div>
+    </div>
+    <div class="row row-gutter-bottom-large">
+        <div class="col-xs-offset-3 col-xs-2">
+            <img width="150" height="150" src="/assets/images/siwimi/circle-ask-white.png" alt="image">
+        </div>
+        <div class="col-xs-4">
+            <h2>Why This Site?</h2>
+            <p>
+                We want to help parents who have young children.  There are many problems encountered by parents everyday.
+                The best way to solve those problems is by helping out each other.
+                We created this site to start our mission of connecting local parents.
+            </p>
+        </div>
+    </div>
+    <div class="row row-gutter-bottom-large">
+        <div class="col-xs-offset-3 col-xs-6">
+            <p class="lead story-snippet">
+                <em>
+                    <span class="cys-highlight">Siwimi</span> is a word invented by the founder's then 2-year-old daughter.
+                    She was trying to sing the last three words of the ABC Alphabet Song - "<span class="cys-highlight">Sing With Me</span>".
+                </em>
+            </p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-5 col-md-3">
+            <h2 class="bold">Get In Touch</h2>
+        </div>
+    </div>
+    <div class="row row-gutter-bottom">
+        <div class="col-xs-offset-2 col-xs-8">
+            <p class="center">
+                We want to know what other features you would like to have to help you raise your children.
+                Your feedback could help us to make the website better.
+                Send us an email at <span class="cys-highlight">info@siwimi.com</span>, or you can use the online form below.
+            </p>
+        </div>
+    </div>
+    {{#if isSubmitted}}
+
+        <div class="row row-gutter-bottom">
+            <div class="col-xs-12">
+                <p class="lead">Thank you for your feedback!</p>
+            </div>
+        </div>
+
+    {{else}}
+
+        <div class="row row-gutter-bottom">
+            <div class="col-xs-offset-3 col-xs-6">
+                <label for="exampleInputEmail1">Email address</label>
+                {{input value=email size="50" class="form-control" placeholder="Email"}}
+            </div>
+        </div>
+        <div class="row row-gutter-bottom">
+            <div class="col-xs-offset-3 col-xs-6">
+                <label for="exampleInputEmail1">Feedback</label>
+                {{textarea value=feedback cols="80" rows="6" class="form-control" placeholder="Please type your feedback here"}}
+            </div>
+        </div>
+        <div class="row row-gutter-bottom">
+            <div class="col-xs-offset-3 col-xs-2">
+                <div class="">
+                    <button class="btn btn-cys" {{action "sendFeedback" email feedback}}>Send</button>
+                </div>
+            </div>
+        </div>
+
+    {{/if}}
+
+</section>
