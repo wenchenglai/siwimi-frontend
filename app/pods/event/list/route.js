@@ -23,7 +23,7 @@ export default Ember.Route.extend({
         },
 
         queryText: {
-            refreshModel: false
+            refreshModel: true
         },
 
         pageNumber: {
@@ -36,9 +36,7 @@ export default Ember.Route.extend({
     },
 
     model(params) {
-        let self = this;
-
-        return self.store.query('event', Ember.merge(params, {
+        return this.store.query('event', Ember.merge(params, {
             //stage: "Approved"
         }));
     },
@@ -61,6 +59,8 @@ export default Ember.Route.extend({
             if (totalRecordCount !== controller.get('queryCount')) {
                 controller.set('queryCount', totalRecordCount);
             }
+        } else {
+            controller.set('queryCount', 0);
         }
     },
 
@@ -73,31 +73,8 @@ export default Ember.Route.extend({
 
 
     actions: {
-        search: function () {
-            let self = this,
-                controller = self.controller,
-                query = {
-                    queryText: controller.get('queryText'),
-                    distance: controller.get('distance'),
-                    period: controller.get('period'),
-                    type: controller.get('type'),
-                    ageGroup: controller.get('ageGroup'),
-                    isFree: controller.get('isFree'),
-                    pageNumber: controller.get('pageNumber'),
-                    pageSize: controller.get('pageSize')
-                };
-
-            self.store.query('event', query).then(function(records) {
-                // it's possible that the page number is not 1, and the queryText search return only one page of result,
-                // so we automatically set the pageNumber to 1 and reload the page again
-                if (records.get('length') === 0 && query['pageNumber'] !== 1) {
-                    self.transitionTo({queryParams: {pageNumber: 1}});
-                }
-
-                self.controller.set('model', records);
-            }, function(error) {
-                self.send('error', error);
-            });
+        search: function (queryText) {
+            this.transitionTo({queryParams: {queryText: queryText}});
         }
     }
 });

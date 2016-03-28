@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
     ageGroup: "all",
     isFree: false,
     queryText: '',
+    queryTextBuffer: '', // to avoid refresh the page again when user just types a single character as queryText
     pageNumber: 1,
     pageSize: 10,
     queryCount: 0, // total query count from this specific query

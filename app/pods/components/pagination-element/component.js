@@ -2,14 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     allPageSizes: [
-        { value: "10", text: 'Show 10'},
-        { value: "50", text: 'Show 50'}],
+        { value: 10, text: 'Show 10'},
+        { value: 50, text: 'Show 50'}],
 
     pagesArray: [{text: '1', className: ''}], // hold the pagination number sequence
     keepPageNumber: false, // due to a condition when user was in high page number, but change other filters (e.g. type or status) that leaves empty model
 
     init() {
-        this._super();
+        this._super(...arguments);
         this._createPages();
     },
 
