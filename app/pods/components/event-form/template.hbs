@@ -1,0 +1,145 @@
+<div class="row row-gutter-bottom">
+    <div class="col-sm-6 col-sm-offset-2">
+        <button type="button" class="btn btn-cys" {{action "save" }} >Save</button>
+        <button type="button" class="btn btn-link" {{action "cancel" }}>Cancel</button>
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label><span class="required">*</span>Title:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{input class="edit_box form-control" placeholder="10 words or less" value=model.title}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-md-2">
+        <label><span class="required">*</span>Date:</label>
+    </div>
+    <div class="col-xs-12 col-md-2">
+        From:
+        {{bs-datetimepicker date=model.fromDateMoment format='YYYY-MM-DD'}}
+        To:
+        {{bs-datetimepicker date=model.toDateMoment format='YYYY-MM-DD'}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Description:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{!--summer-note class="edit_box" height=200 btnSize=bs-sm content=model.description focus=false--}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Web URL:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{input type="url" class="edit_box form-control" value=model.url}}
+        {{#if model.url}}
+            <a href={{model.url}} target="_blank">{{model.url}}</a> (open a new browser tab for this link)
+        {{/if}}
+
+    </div>
+</div>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Time:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{select-element selectedValue=model.fromTime optionList=allTimes prompt="From Time"}}
+        &nbsp;
+        {{select-element selectedValue=model.toTime optionList=allTimes prompt="To Time"}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>
+            Image Data:
+        </label>
+    </div>
+    <div class="col-xs-12 col-sm-10">
+        {{!--file-upload content=model--}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Type:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{select-element selectedValue=model.types optionList=allTypes size="20" multiple=true}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Age:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        From {{select-element selectedValue=model.fromAge optionList=allAges}}
+        To {{select-element selectedValue=model.toAge optionList=allAges}}
+
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Price:</label>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            {{input class="form-control" placeholder="Price in US dollar" value=model.price size="40"}}
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Address:</label>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        {{input class="edit_box form-control" value=model.address}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>City:</label>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        {{input class="edit_box form-control" value=model.city}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>State:</label>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        {{select-element selectedValue=model.state optionList=allStates}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Zip Code:</label>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        {{input class="edit_box form-control" value=model.zipCode}}
+    </div>
+</div>
+
+<hr>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12 col-sm-2">
+        <label>Life Stage:</label>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+        {{select-element selectedValue=model.stage optionList=allLifeStages}}
+    </div>
+</div>
+<div class="row row-gutter-bottom">
+    <div class="col-sm-6 col-sm-offset-2">
+        <button type="button" class="btn btn-cys" {{action "save" }}>Save</button>
+        <button type="button" class="btn btn-link" {{action "cancel" }}>Cancel</button>
+    </div>
+</div>

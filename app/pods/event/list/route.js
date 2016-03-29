@@ -64,16 +64,15 @@ export default Ember.Route.extend({
         }
     },
 
-    resetController (controller, isExiting) {
+    resetController(controller, isExiting) {
         if (isExiting) {
             // isExiting would be false if only the route's model was changing
             controller.set('pageNumber', 1);
         }
     },
 
-
     actions: {
-        search: function (queryText) {
+        search (queryText) {
             this.transitionTo({queryParams: {queryText: queryText}});
         }
     }

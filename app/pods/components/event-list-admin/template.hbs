@@ -1,0 +1,64 @@
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12">
+        <label>
+            {{input checked=showParsers type="checkbox"}} Show Parsers
+        </label>
+    </div>
+</div>
+
+<div class="row row-gutter-bottom">
+    <div class="col-xs-12">
+        <table class="table table-hover">
+            <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>Age</th>
+            <th>Location</th>
+            {{#if showParsers }}
+                <th>Parser</th>
+                <th>CustomData</th>
+            {{/if}}
+            <th>Stage</th>
+            <th></th>
+            </thead>
+            <tbody>
+            {{#each events as |event|}}
+                <tr {{action 'transitionToEdit' event.id}} class={{if (eq event.stage "Approved") 'bold' }}>
+                    <td>
+                        <img width="80" height="80" class="img-thumbnail img-responsive" src={{event.availableImage}}
+                                onerror="this.src='/assets/images/siwimi/placeholder-events.jpg';">
+                    </td>
+                    <td>{{substring event.title}}</td>
+                    <td>
+                        {{#each event.types as |type|}}
+                            {{type}},
+                        {{/each}}
+                    </td>
+                    <td>{{moment-format event.fromDate 'l'}}</td>
+                    <td>{{event.fromAge}}-{{event.toAge}}</td>
+                    <td>{{event.cityState}}</td>
+                    {{#if showParsers }}
+                        <td>{{substring event.parser}}</td>
+                        <td>{{substring event.customData}}</td>
+                    {{/if}}
+
+                    <td>{{event.stage}}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            {{#link-to 'event.edit' event.id class="btn btn-default"}}{{fa-icon "pencil"}}{{/link-to}}
+                            <button type="button" class="btn btn-default" {{action 'delete' event.id bubbles=false}}>{{fa-icon "trash"}}</button>
+                            {{#if (eq event.stage "Approved") }}
+                                <button type="button" class="btn btn-default" {{action 'changeEventLife' event "Rejected" bubbles=false }}>Reject</button>
+                            {{else if (eq event.stage "Rejected") }}
+                                <button type="button" class="btn btn-default" {{action 'changeEventLife' event "Approved" bubbles=false }}>Approve</button>
+                            {{/if }}
+                        </div>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

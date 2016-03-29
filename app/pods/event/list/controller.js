@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    queryParams: ['period', 'type', 'distance', 'ageGroup', 'isFree', 'queryText', 'pageNumber', 'pageSize'],
+    queryParams: ['period', 'type', 'distance', 'ageGroup', 'isFree', 'queryText', 'pageNumber', 'pageSize', 'isAdmin'],
     period: "all",
     type: "all",
     distance: "all",
@@ -12,4 +12,24 @@ export default Ember.Controller.extend({
     pageNumber: 1,
     pageSize: 10,
     queryCount: 0, // total query count from this specific query
+    isAdmin: false,
+
+    actions: {
+        transitionToEdit: function(id) {
+            this.transitionToRoute("event.edit", id);
+        },
+
+        delete (id) {
+            this.store.findRecord('event', id).then(function (record) {
+                record.destroyRecord();
+            });
+        },
+
+        changeEventLife: function(event, newLifeStage) {
+            if (!Ember.isEmpty(newLifeStage)) {
+                event.set('stage', newLifeStage);
+                event.save();
+            }
+        }
+    }
 });

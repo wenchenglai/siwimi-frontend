@@ -1,3 +1,8 @@
+{{#if isAdmin}}
+    <h3>Event Admin</h3>
+{{else}}
+    <h3>Things to do in Ann Arbor, MI</h3>
+{{/if}}
 
 {{event-filters period=period type=type distance=distance ageGroup=ageGroup isFree=isFree}}
 
@@ -10,6 +15,10 @@
         </label>
     </div>
 </div>
+{{#if isAdmin}}
+    {{event-list-admin events=model delete=(action "delete") changeEventLife=(action "changeEventLife") transitionToEdit=(action "transitionToEdit")}}
+{{else}}
+    {{event-list events=model queryText=queryText}}
+{{/if}}
 
-{{event-list events=model queryText=queryText}}
 {{pagination-element queryCount=queryCount pageNumber=pageNumber pageSize=pageSize}}
