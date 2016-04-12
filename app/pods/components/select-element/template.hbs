@@ -1,4 +1,7 @@
 <select class={{selectClassNames}} onchange={{action (mut selectedValue) value="target.value" }}>
+    {{#if hasAll}}
+        <option value="all">All</option>
+    {{/if}}
     {{#each optionList as |selectOption|}}
         {{#if selectOption.value }}
             <option value={{selectOption.value}} selected={{eq selectedValue selectOption.value}}>{{selectOption.text}}</option>

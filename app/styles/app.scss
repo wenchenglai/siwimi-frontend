@@ -10,8 +10,10 @@ $secondary-control-color: #736E6E;
 
 $navigtion-font-size: 17px;
 
+@import 'reset';
 @import 'bootstrap';
 @import 'about';
+@import 'component';
 //@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
 
 

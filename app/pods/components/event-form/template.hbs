@@ -61,7 +61,8 @@
         </label>
     </div>
     <div class="col-xs-12 col-sm-10">
-        {{!--file-upload content=model--}}
+        {{image-file-upload content=model}}
+        <img width="200" height="200" class="img-thumbnail img-responsive" src={{model.imageData}}>
     </div>
 </div>
 <div class="row row-gutter-bottom">
@@ -69,7 +70,14 @@
         <label>Type:</label>
     </div>
     <div class="col-xs-12 col-sm-6">
-        {{select-element selectedValue=model.types optionList=allTypes size="20" multiple=true}}
+        {{#multiselect-checkboxes options=allTypes class="multi-select" labelProperty='text' valueProperty='value' selection=model.types as |type isSelected|}}
+            <li>
+                <label>
+                    {{input type="checkbox" checked=isSelected}}
+                    {{type.text}}
+                </label>
+            </li>
+        {{/multiselect-checkboxes}}
     </div>
 </div>
 <div class="row row-gutter-bottom">
