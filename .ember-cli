@@ -7,4 +7,5 @@
     */
     "disableAnalytics": false,
     "usePods": true
+    /*"ssl": true*/
 }
