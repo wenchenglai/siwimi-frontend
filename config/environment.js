@@ -43,7 +43,7 @@ module.exports = function (environment) {
     }
 
     if (environment === 'production') {
-        ENV.apiHost = 'http://siwimicloud.com/siwimi-webapi-0.0.1';
+        ENV.apiHost = 'https://siwimicloud.com:8443/siwimi-webapi-0.0.1';
         //ENV.apiHost = 'http://52.23.183.11/siwimi-webapi-0.0.1';
     }
 
